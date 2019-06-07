@@ -55,7 +55,9 @@ function remove(id) {
 }
 
 function getProjectActions(projectId) {
-  return db("actions")
+  return db
+    .select(["id", "description", "notes", "completed"])
+    .from("actions")
     .where("project_id", projectId)
     .then(actions => actions.map(action => mappers.actionToBody(action)));
 }

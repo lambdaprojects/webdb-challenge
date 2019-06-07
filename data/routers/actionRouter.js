@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const actionHelper = require("../helpers/actionModel.js");
-const projectHelper = require("../helpers/projectModel.js");
+const actionHelper = require("../helpers/actionHelper.js");
+const projectHelper = require("../helpers/projectHelper.js");
 
 //GET ALL ACTIONS
 router.get("/", async (req, res) => {

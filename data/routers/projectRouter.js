@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const projectHelper = require("../helpers/projectModel.js");
+const projectHelper = require("../helpers/projectHelper.js");
 
 // GET ALL PROJECTS
 router.get("/", async (req, res) => {
