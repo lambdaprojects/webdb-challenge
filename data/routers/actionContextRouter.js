@@ -9,13 +9,14 @@ router.get("/", async (req, res) => {
   try {
     const actionContext = await actionContextHelper.get();
     if (actionContext.length > 0) {
-      res.status(200).json(contexts);
+      res.status(200).json(actionContext);
     } else {
       res
         .status(400)
         .json({ ERROR_MESSAGE: "There are no action-contexts to display" });
     }
   } catch (error) {
+    console.log(":::: ERROR ::::" + error);
     res.status(500).json({
       ERROR_MESSAGE: "There was an error while retrieving the action-contexts."
     });
@@ -28,6 +29,7 @@ router.post("/", validateActionContext, async (req, res) => {
     const actionContext = await actionContextHelper.add(req.body);
     res.status(200).json(actionContext);
   } catch (error) {
+    console.log(":::: ERROR ::::" + error);
     res.status(500).json({
       ERROR_MESSAGE: "There was an error while inserting the action-context."
     });
@@ -110,9 +112,13 @@ async function validateActionContextId(req, res, next) {
 async function validateActionContext(req, res, next) {
   if (req.body) {
     if (req.body.action_id && req.body.context_id) {
+      console.log(":: ACTION ID IN REQ BODY IS ::" + req.body.action_id);
+      console.log(":: CONTEXT ID IN REQ BODY IS ::" + req.body.context_id);
       const action_id = await actionHelper.get(req.body.action_id);
       const context_id = await contextHelper.getById(req.body.context_id);
-      if (action_id.length > 0 && context_id > 0) {
+      console.log(":: ACTION ID value::" + JSON.stringify(action_id));
+      console.log(":: CONTEXT ID value ::" + JSON.stringify(context_id));
+      if (action_id !== null && context_id !== null) {
         next();
       } else {
         res
