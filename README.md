@@ -33,9 +33,29 @@ This will be akin to the Web API that you built in the last sprint, only this ti
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. Explain the difference between `RDBMS` and `SQL`.
+
+   - Answer
+     An RDBMS is a relational database management system. It is the database software itself that manages storage,
+     querying, updating and all activities related to database operations. The implementation language for a RDBMS is
+     usually C.
+     SQL is structured query language. This is a language which is used to query the RDBMS. To work with SQL you
+     just need to learn the SQL and know the theoretical concepts of RDBMS.
+
 1. Why do tables need a `primary key`?
+
+   - Answer
+     A primary key in a RDBMS is a special column which has unique keys to identify all table records. A primary key
+     must contain unique value for each row of data and cannot be null. The records in a table can be linked to another
+     table's records using the primary key of table one as a foreign key in table 2.
+
 1. What is the name given to a table column that references the primary key on another table.
+
+   - Answer
+     Foreign key
+
 1. What do we need in order to have a _many to many_ relationship between two tables.
+   - Answer
+     Third table
 
 ## Project Set Up
 
